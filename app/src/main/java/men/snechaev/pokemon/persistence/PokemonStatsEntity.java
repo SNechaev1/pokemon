@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 public class PokemonStatsEntity {
 
     @PrimaryKey
-    int pokemonId;
     int statsId;
     int baseStat;
     int effort;

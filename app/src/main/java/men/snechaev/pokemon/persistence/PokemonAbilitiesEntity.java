@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 public class PokemonAbilitiesEntity {
 
     @PrimaryKey
-    int pokemonId;
     int abilityId;
 
     String name;
