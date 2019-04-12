@@ -1,4 +1,4 @@
-package men.snechaev.pokemon;
+package men.snechaev.pokemon.ui;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,6 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import men.snechaev.pokemon.R;
 import men.snechaev.pokemon.dummy.DummyContent;
 
 public class MainActivity extends AppCompatActivity implements ListOfPokemonsFragment.OnListFragmentInteractionListener {
@@ -20,14 +21,11 @@ public class MainActivity extends AppCompatActivity implements ListOfPokemonsFra
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_discover:
                     mTextMessage.setText(R.string.title_home);
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_pokedex:
                     mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
             return false;

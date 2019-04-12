@@ -1,4 +1,4 @@
-package men.snechaev.pokemon;
+package men.snechaev.pokemon.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import men.snechaev.pokemon.R;
 import men.snechaev.pokemon.dummy.DummyContent;
 import men.snechaev.pokemon.dummy.DummyContent.DummyItem;
 

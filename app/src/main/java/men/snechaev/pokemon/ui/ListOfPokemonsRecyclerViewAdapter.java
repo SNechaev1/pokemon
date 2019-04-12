@@ -1,16 +1,16 @@
-package men.snechaev.pokemon;
-
-import androidx.recyclerview.widget.RecyclerView;
+package men.snechaev.pokemon.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import men.snechaev.pokemon.ListOfPokemonsFragment.OnListFragmentInteractionListener;
-import men.snechaev.pokemon.dummy.DummyContent.DummyItem;
-
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
+import men.snechaev.pokemon.R;
+import men.snechaev.pokemon.dummy.DummyContent.DummyItem;
+import men.snechaev.pokemon.ui.ListOfPokemonsFragment.OnListFragmentInteractionListener;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
