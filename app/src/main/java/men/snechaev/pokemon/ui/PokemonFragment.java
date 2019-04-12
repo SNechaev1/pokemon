@@ -11,6 +11,7 @@ import men.snechaev.pokemon.R;
 
 
 public class PokemonFragment extends Fragment {
+    public static final String TAG = "PokemonFragment";
 
 
 //    private OnFragmentInteractionListener listener;
