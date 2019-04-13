@@ -1,6 +1,7 @@
 package men.snechaev.pokemon.ui;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -44,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements ListOfPokemonsFra
 
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }
+
+    public void savePokemon(View view) {
 
     }
 }

@@ -17,6 +17,8 @@ import men.snechaev.pokemon.dummy.DummyContent.DummyItem;
 
 public class ListOfPokemonsFragment extends Fragment {
 
+    private static final String TAG = "ListOfPokemonsFragment";
+
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters

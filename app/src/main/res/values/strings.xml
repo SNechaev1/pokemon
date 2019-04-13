@@ -3,4 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="save">SAVE</string>
+    <string name="nav_discover">Discover</string>
+    <string name="nav_pokedex">Pokedex</string>
+    <string name="stats">Stats</string>
+    <string name="abilities">Abilities</string>
+    <string name="pokemon_image">pokemon image</string>
 </resources>
