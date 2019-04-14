@@ -15,9 +15,9 @@ import men.snechaev.pokemon.dummy.DummyContent;
 import men.snechaev.pokemon.dummy.DummyContent.DummyItem;
 
 
-public class ListOfPokemonsFragment extends Fragment {
+public class PokemonListFragment extends Fragment {
 
-    private static final String TAG = "ListOfPokemonsFragment";
+    public static final String TAG = "PokemonListFragment";
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -25,12 +25,12 @@ public class ListOfPokemonsFragment extends Fragment {
     private int mColumnCount = 2;
     private OnListFragmentInteractionListener mListener;
 
-    public ListOfPokemonsFragment() { }
+    public PokemonListFragment() { }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ListOfPokemonsFragment newInstance(int columnCount) {
-        ListOfPokemonsFragment fragment = new ListOfPokemonsFragment();
+    public static PokemonListFragment newInstance(int columnCount) {
+        PokemonListFragment fragment = new PokemonListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -60,7 +60,7 @@ public class ListOfPokemonsFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new ListOfPokemonsRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new PokemonListRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
     }

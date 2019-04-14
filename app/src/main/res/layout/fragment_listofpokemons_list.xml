@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:context="men.snechaev.pokemon.ui.ListOfPokemonsFragment"
+    tools:context="men.snechaev.pokemon.ui.PokemonListFragment"
     tools:listitem="@layout/fragment_listofpokemons" />

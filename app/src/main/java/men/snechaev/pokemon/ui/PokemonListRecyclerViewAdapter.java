@@ -10,19 +10,19 @@ import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
 import men.snechaev.pokemon.R;
 import men.snechaev.pokemon.dummy.DummyContent.DummyItem;
-import men.snechaev.pokemon.ui.ListOfPokemonsFragment.OnListFragmentInteractionListener;
+import men.snechaev.pokemon.ui.PokemonListFragment.OnListFragmentInteractionListener;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class ListOfPokemonsRecyclerViewAdapter extends RecyclerView.Adapter<ListOfPokemonsRecyclerViewAdapter.ViewHolder> {
+public class PokemonListRecyclerViewAdapter extends RecyclerView.Adapter<PokemonListRecyclerViewAdapter.ViewHolder> {
 
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public ListOfPokemonsRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public PokemonListRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -63,8 +63,8 @@ public class ListOfPokemonsRecyclerViewAdapter extends RecyclerView.Adapter<List
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = view.findViewById(R.id.tv_pokemon_id);
+            mContentView = view.findViewById(R.id.tv_pokemon_name);
         }
 
         @Override
