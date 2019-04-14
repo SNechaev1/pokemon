@@ -7,11 +7,14 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "pokemons")
 public class PokemonEntity {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey()
     int pokemonId;
 
     String name;
     String url;
+    String SpriteUrl;
+    String SpriteLocalPath;
+
 
 
 }

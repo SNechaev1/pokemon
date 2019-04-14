@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "abilities")
 public class PokemonAbilitiesEntity {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     int abilityId;
 
     String name;
