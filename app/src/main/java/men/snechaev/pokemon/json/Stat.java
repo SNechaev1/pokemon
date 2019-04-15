@@ -7,13 +7,13 @@ public class Stat {
 
     @SerializedName("base_stat")
     @Expose
-    public Integer baseStat;
+    Integer baseStat;
     @SerializedName("effort")
     @Expose
-    public Integer effort;
+    Integer effort;
     @SerializedName("stat")
     @Expose
-    public NestedStat stat;
+    NestedStat stat;
 
     @Override
     public String toString() {

@@ -9,6 +9,7 @@ import men.snechaev.pokemon.json.PokemonJson;
 import men.snechaev.pokemon.network.HttpClient;
 import men.snechaev.pokemon.persistence.PokemonDatabase;
 import men.snechaev.pokemon.persistence.PokemonEntity;
+import men.snechaev.pokemon.ui.Pokemon;
 
 
 public class DataRepository {
@@ -73,9 +74,10 @@ public class DataRepository {
         HttpClient.getInstance().requestPokemonList();
     }
 
-    public LiveData<PokemonJson> requestPokemonNet(int id) {
+    public LiveData<Pokemon> requestPokemonNet(int id) {
         return HttpClient.getInstance().requestPokemon(id);
     }
+
 
 
 

@@ -15,6 +15,4 @@ public class PokemonEntity {
     String SpriteUrl;
     String SpriteLocalPath;
 
-
-
 }

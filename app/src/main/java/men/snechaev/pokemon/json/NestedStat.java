@@ -7,10 +7,10 @@ public class NestedStat {
 
     @SerializedName("name")
     @Expose
-    public String name;
+    String name;
     @SerializedName("url")
     @Expose
-    public String url;
+    String url;
 
     @Override
     public String toString() {

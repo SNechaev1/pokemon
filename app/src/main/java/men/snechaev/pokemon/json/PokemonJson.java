@@ -9,19 +9,19 @@ public class PokemonJson {
 
     @SerializedName("id")
     @Expose
-    public String id;
+    String id;
     @SerializedName("name")
     @Expose
-    public String name;
+    String name;
     @SerializedName("abilities")
     @Expose
-    public ArrayList<Ability> abilities;
+    ArrayList<Ability> abilities;
     @SerializedName("stats")
     @Expose
-    public ArrayList<Stat> stats;
+    ArrayList<Stat> stats;
     @SerializedName("sprites")
     @Expose
-    public Sprites sprites;
+    Sprites sprites;
 
 
     @Override

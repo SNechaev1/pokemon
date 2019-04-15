@@ -9,9 +9,11 @@ import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
 import men.snechaev.pokemon.BuildConfig;
+import men.snechaev.pokemon.json.ConverterJson;
 import men.snechaev.pokemon.json.PokemonBasic;
 import men.snechaev.pokemon.json.PokemonJson;
 import men.snechaev.pokemon.json.PokemonListJson;
+import men.snechaev.pokemon.ui.Pokemon;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -26,8 +28,8 @@ public class HttpClient {
     private static WebService client;
 //    public WebService client;
     List<PokemonBasic> pokemonBasicList;
-    final MutableLiveData<PokemonJson> data = new MutableLiveData<>();
-
+    private final MutableLiveData<Pokemon> pokemonMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<List<Pokemon>> pokemonListMutableLiveData = new MutableLiveData<>();
 
 //    static PokemonViewModel pokemonViewModel;
 
@@ -78,27 +80,29 @@ public class HttpClient {
 
     }
 
-    public MutableLiveData<PokemonJson> requestPokemon(int id) {
+    public MutableLiveData<Pokemon> requestPokemon(int id) {
         Call<PokemonJson>  webCall = client.getPokemon(id);
         webCall.enqueue(new Callback<PokemonJson>() {
             @Override
             public void onResponse(Call<PokemonJson> call, Response<PokemonJson> response) {
-                PokemonJson pokemon = response.body();
-                Log.i("Web", "onResponse: " + pokemon);
 
-
-                    if (response.isSuccessful()) {
-                        data.setValue(response.body());
-                    }
+                if (response.isSuccessful()) {
+                    PokemonJson pokemonJson = response.body();
+                    Log.i("Web", "onResponse:pokemonJson " + pokemonJson);
+                    assert pokemonJson != null;
+                    Pokemon pokemon = ConverterJson.toUI(pokemonJson);
+                    Log.i("Web", "onResponse:pokemon " + pokemon);
+                    pokemonMutableLiveData.setValue(pokemon);
+                }
             }
 
             @Override
             public void onFailure(Call<PokemonJson> call, Throwable t) {
-                data.setValue(null);
+                pokemonMutableLiveData.setValue(null);
                 t.printStackTrace();
             }
         });
-        return data;
+        return pokemonMutableLiveData;
     }
 
 

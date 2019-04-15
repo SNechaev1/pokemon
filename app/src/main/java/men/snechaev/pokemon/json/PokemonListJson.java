@@ -9,16 +9,16 @@ public class PokemonListJson {
 
         @SerializedName("count")
         @Expose
-        public Integer count;
+        Integer count;
         @SerializedName("next")
         @Expose
-        public String next;
+        String next;
         @SerializedName("previous")
         @Expose
-        public Object previous;
+        Object previous;
         @SerializedName("results")
         @Expose
-        public ArrayList<PokemonBasic> results;
+        ArrayList<PokemonBasic> results;
 
     @Override
     public String toString() {

@@ -7,13 +7,13 @@ public class Ability {
 
     @SerializedName("ability")
     @Expose
-    public NestedAbility ability;
+    NestedAbility ability;
     @SerializedName("is_hidden")
     @Expose
-    public Boolean isHidden;
+    private Boolean isHidden;
     @SerializedName("slot")
     @Expose
-    public Integer slot;
+    private Integer slot;
 
     @Override
     public String toString() {
