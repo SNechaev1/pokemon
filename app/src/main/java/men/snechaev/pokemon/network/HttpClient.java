@@ -9,6 +9,7 @@ import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
 import men.snechaev.pokemon.BuildConfig;
+import men.snechaev.pokemon.json.PokemonBasic;
 import men.snechaev.pokemon.json.PokemonJson;
 import men.snechaev.pokemon.json.PokemonListJson;
 import okhttp3.OkHttpClient;
@@ -24,7 +25,7 @@ public class HttpClient {
     private static HttpClient instance;
     private static WebService client;
 //    public WebService client;
-    List<PokemonListJson.PokemonBasic> pokemonBasicList;
+    List<PokemonBasic> pokemonBasicList;
     final MutableLiveData<PokemonJson> data = new MutableLiveData<>();
 
 

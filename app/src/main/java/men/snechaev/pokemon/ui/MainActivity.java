@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import men.snechaev.pokemon.R;
 import men.snechaev.pokemon.dummy.DummyContent;
+import men.snechaev.pokemon.network.HttpClient;
 import men.snechaev.pokemon.viewmodel.DataRepository;
 import men.snechaev.pokemon.viewmodel.PokemonViewModel;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements PokemonListFragme
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         applyFragment(new PokemonFragment(), R.id.fragment_container, PokemonFragment.TAG);
-        applyFragment(new PokemonListFragment(), R.id.fragment_container, PokemonListFragment.TAG);
+//        applyFragment(new PokemonListFragment(), R.id.fragment_container, PokemonListFragment.TAG);
 
     }
 
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements PokemonListFragme
     }
 
     public void savePokemon(View view) {
+//        HttpClient.getInstance().requestPokemonList();
+        HttpClient.getInstance().requestPokemon(1);
 
     }
 

@@ -20,6 +20,7 @@ import men.snechaev.pokemon.ui.PokemonListFragment.OnListFragmentInteractionList
 public class PokemonListRecyclerViewAdapter extends RecyclerView.Adapter<PokemonListRecyclerViewAdapter.ViewHolder> {
 
     private final List<DummyItem> mValues;
+
     private final OnListFragmentInteractionListener mListener;
 
     public PokemonListRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {

@@ -20,25 +20,6 @@ public class PokemonListJson {
         @Expose
         public ArrayList<PokemonBasic> results;
 
-
-        public class PokemonBasic {
-
-            @SerializedName("name")
-            @Expose
-            public String name;
-            @SerializedName("url")
-            @Expose
-            public String url;
-
-            @Override
-            public String toString() {
-                return "PokemonBasic{" +
-                        "name='" + name + '\'' +
-                        ", url='" + url + '\'' +
-                        '}';
-            }
-        }
-
     @Override
     public String toString() {
         return "PokemonListJson{" +
