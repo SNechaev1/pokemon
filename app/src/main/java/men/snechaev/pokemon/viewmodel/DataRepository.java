@@ -5,8 +5,10 @@ import java.util.List;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-import men.snechaev.pokemon.json.PokemonJson;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import men.snechaev.pokemon.network.HttpClient;
+import men.snechaev.pokemon.persistence.ConverterEntity;
 import men.snechaev.pokemon.persistence.PokemonDatabase;
 import men.snechaev.pokemon.persistence.PokemonEntity;
 import men.snechaev.pokemon.ui.Pokemon;
@@ -18,21 +20,20 @@ public class DataRepository {
     private final PokemonDatabase db;
     private MediatorLiveData<List<PokemonEntity>> observablePokemonListDb;
     private MediatorLiveData<PokemonEntity> observablePokemonDb;
-    private MediatorLiveData<List<PokemonJson>> observablePokemonListNet;
-    private MediatorLiveData<PokemonJson> observablePokemonNet;
+    private MediatorLiveData<Pokemon> observablePokemonNet;
 
 
     private DataRepository(final PokemonDatabase db) {
 
 //        Database Observers
         this.db = db;
-        observablePokemonListDb = new MediatorLiveData<>();
-        observablePokemonListDb.addSource(this.db.pokemonDao().getAll(),
-                pokemonEntities -> {
-                    if (this.db.isDatabaseCreated().getValue() != null) {
-                        observablePokemonListDb.postValue(pokemonEntities);
-                    }
-                });
+//        observablePokemonListDb = new MediatorLiveData<>();
+//        observablePokemonListDb.addSource(this.db.pokemonDao().getAll(),
+//                pokemonEntities -> {
+//                    if (this.db.isDatabaseCreated().getValue() != null) {
+//                        observablePokemonListDb.postValue(pokemonEntities);
+//                    }
+//                });
 
 //        Network Observers
 
@@ -56,12 +57,15 @@ public class DataRepository {
     }
 
 //    Get Data from Database
-    public LiveData<List<PokemonEntity>> getPokemonListDb() {
-        return observablePokemonListDb;
+    public LiveData<List<Pokemon>> getPokemonListDb() {
+
+        return Transformations
+                .map(db.pokemonDao().getAll(), ConverterEntity::toPokemonList);
     }
 
-    public LiveData<PokemonEntity> getPokemonDb(Integer pokemonId) {
-        return db.pokemonDao().get(pokemonId);
+    public LiveData<Pokemon> getPokemonDb(Integer id) {
+        return Transformations
+                .map(db.pokemonDao().get(id), ConverterEntity::toPokemon);
     }
 
     public void savePokemon(PokemonEntity pokemonEntity) {
@@ -70,11 +74,31 @@ public class DataRepository {
 
 //    Get Data from Network
 
-    public void requestPokemonListNet() {
-        HttpClient.getInstance().requestPokemonList();
+    private MutableLiveData<List<Pokemon>> mutablePokemonListNet;
+
+//    LiveData<Pokemon> pokemonLiveData = Transformations.switchMap(repoIdLiveData, repoId -> {
+//                if (repoId.isEmpty()) {
+//                    return AbsentLiveData.create();
+//                }
+//                return repository.loadRepo(repoId);
+//            }
+//    );
+
+//    public static LiveData<Y> switchMap (LiveData<X> source,
+//                                         Function<X, LiveData<Y>> switchMapFunction)
+
+//    public LiveData<List<Pokemon>> getUsersWithNameLiveData() {
+//        return Transformations.switchMap(
+//                mutablePokemonListNet,
+//                list -> requestPokemonListNet());
+//    }
+
+
+    public List<Pokemon> requestPokemonListNet() {
+        return HttpClient.getInstance().requestPokemonList(20);
     }
 
-    public LiveData<Pokemon> requestPokemonNet(int id) {
+    public Pokemon requestPokemonNet(int id) {
         return HttpClient.getInstance().requestPokemon(id);
     }
 

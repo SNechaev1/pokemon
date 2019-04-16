@@ -15,7 +15,7 @@ import men.snechaev.pokemon.viewmodel.PokemonViewModel;
 
 public class PokemonFragment extends Fragment {
     public static final String TAG = "PokemonFragment";
-    PokemonViewModel pokemonViewModel;
+    private PokemonViewModel pokemonViewModel;
 
 //    private OnFragmentInteractionListener listener;
 
@@ -37,11 +37,8 @@ public class PokemonFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         pokemonViewModel = ViewModelProviders.of(getActivity()).get(PokemonViewModel.class);
-//        final Observer<DummyContent.DummyItem> idObserver = dummyItem -> {
-//            Log.i(TAG, "onCreate: " + dummyItem.id);
-//        };
-        pokemonViewModel.getSelectedId().observe(this, dummyItem ->  {
-            Log.i(TAG, "onCreate: " + dummyItem.id);
+        pokemonViewModel.getPokemonObservable().observe(this, pokemon ->  {
+            Log.i(TAG, "onCreate: " + pokemon.getId());
         });
 
     }

@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Pokemon {
 
-    private Integer pokemonId;
+    private String id;
     private String name;
     private String url;
     private String SpriteUrl;
@@ -16,12 +16,12 @@ public class Pokemon {
     private Map<String, Integer> stats = new HashMap<>();
 
 
-    public Integer getPokemonId() {
-        return pokemonId;
+    public String getId() {
+        return id;
     }
 
-    public void setPokemonId(Integer pokemonId) {
-        this.pokemonId = pokemonId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -75,7 +75,7 @@ public class Pokemon {
     @Override
     public String toString() {
         return "Pokemon{" +
-                "pokemonId=" + pokemonId +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 ", SpriteUrl='" + SpriteUrl + '\'' +

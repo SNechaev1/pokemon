@@ -9,23 +9,19 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import men.snechaev.pokemon.R;
-import men.snechaev.pokemon.dummy.DummyContent.DummyItem;
 import men.snechaev.pokemon.ui.PokemonListFragment.OnListFragmentInteractionListener;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
+ * makes a call to the specified {@link OnListFragmentInteractionListener}.
  */
 public class PokemonListRecyclerViewAdapter extends RecyclerView.Adapter<PokemonListRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Pokemon> items;
+    private final OnListFragmentInteractionListener listener;
 
-    private final OnListFragmentInteractionListener mListener;
-
-    public PokemonListRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
-        mListener = listener;
+    public PokemonListRecyclerViewAdapter(List<Pokemon> items, OnListFragmentInteractionListener listener) {
+        this.items = items;
+        this.listener = listener;
     }
 
     @Override
@@ -37,40 +33,40 @@ public class PokemonListRecyclerViewAdapter extends RecyclerView.Adapter<Pokemon
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.item = items.get(position);
+        holder.tvId.setText(items.get(position).getId());
+        holder.tvName.setText(items.get(position).getName());
 
-        holder.mView.setOnClickListener(v -> {
-            if (null != mListener) {
+        holder.view.setOnClickListener(v -> {
+            if (null != listener) {
                 // Notify the active callbacks interface (the activity, if the
                 // fragment is attached to one) that an item has been selected.
-                mListener.onListFragmentInteraction(holder.mItem);
+                listener.onListFragmentInteraction(holder.item);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return items.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        final View view;
+        final TextView tvId;
+        final TextView tvName;
+        Pokemon item;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
-            mView = view;
-            mIdView = view.findViewById(R.id.tv_pokemon_id);
-            mContentView = view.findViewById(R.id.tv_pokemon_name);
+            this.view = view;
+            tvId = view.findViewById(R.id.tv_pokemon_id);
+            tvName = view.findViewById(R.id.tv_pokemon_name);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + tvName.getText() + "'";
         }
     }
 }
