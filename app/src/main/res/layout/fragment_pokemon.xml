@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_pokemon"
         android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -22,17 +22,17 @@
         android:contentDescription="@string/pokemon_image" />
 
     <TextView
-        android:id="@+id/tv_stats"
+        android:id="@+id/tv_title_stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="@string/stats"
+        android:text="@string/title_stats"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_pokemon" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <ScrollView
+        android:id="@+id/sv_stats"
         android:layout_width="395dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -40,42 +40,60 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_stats" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_stats" >
+
+        <TextView
+            android:id="@+id/tv_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </ScrollView>
 
     <TextView
-        android:id="@+id/tv_abilities"
+        android:id="@+id/tv_title_abilities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="@string/abilities"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/sv_stats" />
+
 
     <ScrollView
+        android:id="@+id/sv_abilities"
         android:layout_width="395dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_abilities">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_abilities">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_abilities"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </ScrollView>
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:onClick="savePokemon"
         android:text="@string/save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sv_abilities" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

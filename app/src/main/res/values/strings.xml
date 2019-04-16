@@ -9,4 +9,5 @@
     <string name="stats">Stats</string>
     <string name="abilities">Abilities</string>
     <string name="pokemon_image">pokemon image</string>
+    <string name="title_stats">Stats</string>
 </resources>

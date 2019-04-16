@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpClient {
 
     private static HttpClient instance;
-    private static WebService client;
+    private static WebService webService;
     private Pokemon pokemon = new Pokemon();
     private static final String BASE_URL = "https://pokeapi.co/api/v2/";
 
@@ -60,13 +60,13 @@ public class HttpClient {
 
         Retrofit retrofit = builder.build();
 
-        client = retrofit.create(WebService.class);
+        webService = retrofit.create(WebService.class);
     }
 
 
     public Pokemon requestPokemon(int id) {
 
-        CompletableFuture<PokemonJson> webCall = client.getPokemon(id);
+        CompletableFuture<PokemonJson> webCall = webService.getPokemon(id);
         try {
             pokemon = ConverterJson.toPokemon(webCall.get());
             Log.i("Web", "onResponse " + pokemon);
@@ -91,7 +91,7 @@ public class HttpClient {
 
         List<CompletableFuture<PokemonJson>> futures =
                 ids.stream()
-                        .map(id -> client.getPokemon(id))
+                        .map(id -> webService.getPokemon(id))
                         .collect(Collectors.toList());
 
         List<PokemonJson> result =
