@@ -4,20 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import androidx.lifecycle.MutableLiveData;
 import men.snechaev.pokemon.ui.Pokemon;
 
+//  Converter from PokemonJson class, which has multiple nested classes inside,
+//  to more pretty Pokemon class
 public class ConverterJson {
 
-    final MutableLiveData<List<Pokemon>> observablePokemonList = new MutableLiveData<>();
-
-
-    public static Pokemon toUI(PokemonJson pokemonJson) {
+    public static Pokemon toPokemon(PokemonJson pokemonJson) {
 
       Pokemon pokemon = new Pokemon();
-      Integer id = Integer.decode(pokemonJson.id);
+      String id = pokemonJson.id;
 
-      pokemon.setPokemonId(id);
+      pokemon.setId(id);
       pokemon.setName(pokemonJson.name);
       pokemon.setSpriteUrl(pokemonJson.sprites.imageUrl);
 
@@ -37,4 +35,16 @@ public class ConverterJson {
 
         return pokemon;
     }
+
+    public static List<Pokemon> toPokemonList(List<PokemonJson> pokemonJsonList) {
+
+        ArrayList<Pokemon> pokemonList = new ArrayList<>();
+
+        for (PokemonJson pokemonJson: pokemonJsonList) {
+            pokemonList.add(toPokemon(pokemonJson));
+        }
+
+        return pokemonList;
+    }
+
 }
