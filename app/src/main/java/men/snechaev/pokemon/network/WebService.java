@@ -11,5 +11,4 @@ public interface WebService {
     @GET("pokemon/{id}")
     CompletableFuture<PokemonJson> getPokemon(@Path("id") int id);
 
-
 }
